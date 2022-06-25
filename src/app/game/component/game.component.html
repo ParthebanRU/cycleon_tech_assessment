@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<div class="container">
+    <div class="game-id" *ngIf="gameId !== 0; else elseBlock">
+        <p >Game ID: {{gameId}}</p>
+    </div>
+    <ng-template #elseBlock>
+        <button mat-raised-button (click)="createGame()">Create Game</button>
+    </ng-template>
+
+    <div class="player-2" *ngIf="gameId !== 0">
+        <mat-icon class="material-symbols-outlined person" > person </mat-icon><br>
+        <div>Player 2</div>
+    </div>
+    
+    <div class="board" *ngIf="gameId !== 0" >
+    
+        <div class="kalah-pit-p2"> 
+            <ng-container *ngFor="let _ of [].constructor(kalahP2)">
+                <mat-icon class="material-symbols-outlined" >
+                    circle
+                </mat-icon>
+            </ng-container>
+        </div>
+        <table class="regular-pits">
+            <tr>
+                <td *ngFor="let pit of pits">
+                    <ng-container *ngFor="let _ of [].constructor(pit.p2)">
+                        <mat-icon class="material-symbols-outlined" >
+                            circle
+                        </mat-icon>
+                    </ng-container>
+                </td>
+            </tr>
+            <tr>
+                <td *ngFor="let pit of pits">
+                    <ng-container *ngFor="let _ of [].constructor(pit.p1)">
+                        <mat-icon class="material-symbols-outlined" >
+                            circle
+                        </mat-icon>
+                    </ng-container>
+                </td>
+            </tr>
+        </table>
+        <div class="kalah-pit-p1"> 
+            <ng-container *ngFor="let _ of [].constructor(kalahP1)">
+                <mat-icon class="material-symbols-outlined" >
+                    circle
+                </mat-icon>
+            </ng-container>
+        </div>
+    </div>
+    <div class="player-1" *ngIf="gameId !== 0">
+        <mat-icon class="material-symbols-outlined person" > person </mat-icon><br>
+        <div>Player 1</div>
+    </div>
+</div>
+
